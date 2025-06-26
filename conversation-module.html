@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Módulo de Conversação - Kiddy Talk</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'kiddy-blue': '#2EBBC0',
+            'kiddy-yellow': '#FED700',
+            'kiddy-orange': '#FF6835',
+            'kiddy-green': '#4CAF50',
+            'kiddy-red': '#FF9252',
+            'kiddy-soft-white': '#FF99FA22'
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-kiddy-soft-white">
+
+  <!-- Header -->
+  <header class="bg-kiddy-blue text-white p-4 shadow-lg">
+    <div class="max-w-7xl mx-auto flex justify-between items-center">
+      <div class="flex items-center space-x-3">
+        <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center">
+          <span class="text-2xl">🧸</span>
+        </div>
+        <h1 class="text-2xl md:text-3xl font-bold">KIDDY TALK</h1>
+      </div>
+      <nav class="hidden md:flex space-x-6 text-white text-lg">
+        <a href="index.html" class="hover:bg-white hover:bg-opacity-20 px-3 py-2 rounded-lg transition-all">Início</a>
+        <a href="english-module.html" class="hover:bg-white hover:bg-opacity-20 px-3 py-2 rounded-lg transition-all">Inglês</a>
+        <a href="conversation-module.html" class="nav-active hover:bg-white hover:bg-opacity-20 px-3 py-2 rounded-lg transition-all">Conversação</a>
+        <a href="game.html" class="hover:bg-white hover:bg-opacity-20 px-3 py-2 rounded-lg transition-all">Jogos</a>
+      </nav>
+      <button class="md:hidden text-white" onclick="toggleMobileMenu()">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden mt-4 space-y-2">
+      <a href="index.html" class="block px-3 py-2 rounded-lg hover:bg-white hover:bg-opacity-20">Início</a>
+      <a href="english-module.html" class="block px-3 py-2 rounded-lg hover:bg-white hover:bg-opacity-20">Inglês</a>
+      <a href="conversation-module.html" class="block px-3 py-2 rounded-lg bg-white bg-opacity-20">Conversação</a>
+      <a href="game.html" class="block px-3 py-2 rounded-lg hover:bg-white hover:bg-opacity-20">Jogos</a>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="bg-kiddy-blue py-12">
+    <div class="max-w-7xl mx-auto px-4 text-center">
+      <h2 class="text-4xl md:text-5xl font-bold mb-4 text-white fade-in">💬 Módulo de Conversação</h2>
+      <p class="text-xl text-white mb-6 fade-in">Pratique conversas em inglês com nossos personagens!</p>
+      <div class="flex justify-center">
+        <div class="w-24 h-24 bg-white rounded-full flex items-center justify-center bounce">
+          <span class="text-5xl">🗣️</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Character Selection -->
+  <section class="py-12 bg-white">
+    <div class="max-w-7xl mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-12 text-kiddy-dark">Escolha seu Parceiro de Conversação</h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Teddy Bear -->
+        <div class="character-card card text-center hover-glow" data-character="teddy">
+          <div class="w-32 h-32 bg-kiddy-orange rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-6xl">🐻</span>
+          </div>
+          <h3 class="text-2xl font-bold mb-2 text-kiddy-dark">Teddy Bear</h3>
+          <p class="text-gray-600 mb-4">Um urso amigável que adora conversar sobre família e amigos!</p>
+          <div class="mb-4">
+            <span class="bg-kiddy-yellow text-kiddy-dark px-3 py-1 rounded-full text-sm font-semibold">Nível: Iniciante</span>
+          </div>
+          <button class="btn-kiddy btn-secondary w-full" onclick="startConversation('teddy')">Conversar com Teddy</button>
+        </div>
+
+        <!-- Little Emma -->
+        <div class="character-card card text-center hover-glow" data-character="emma">
+          <div class="w-32 h-32 bg-kiddy-green rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-6xl">👧</span>
+          </div>
+          <h3 class="text-2xl font-bold mb-2 text-kiddy-dark">Little Emma</h3>
+          <p class="text-gray-600 mb-4">Uma menina curiosa que gosta de falar sobre escola e brincadeiras!</p>
+          <div class="mb-4">
+            <span class="bg-kiddy-blue text-white px-3 py-1 rounded-full text-sm font-semibold">Nível: Intermediário</span>
+          </div>
+          <button class="btn-kiddy btn-primary w-full" onclick="startConversation('emma')">Conversar com Emma</button>
+        </div>
+
+        <!-- Wise Turtle -->
+        <div class="character-card card text-center hover-glow" data-character="turtle">
+          <div class="w-32 h-32 bg-kiddy-red rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-6xl">🐢</span>
+          </div>
+          <h3 class="text-2xl font-bold mb-2 text-kiddy-dark">Wise Turtle</h3>
+          <p class="text-gray-600 mb-4">Uma tartaruga sábia que ensina sobre o mundo e a natureza!</p>
+          <div class="mb-4">
+            <span class="bg-kiddy-red text-white px-3 py-1 rounded-full text-sm font-semibold">Nível: Avançado</span>
+          </div>
+          <button class="btn-kiddy btn-success w-full" onclick="startConversation('turtle')">Conversar com Turtle</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Conversation Topics -->
+  <section class="py-12 bg-kiddy-soft-white">
+    <div class="max-w-7xl mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-12 text-kiddy-dark">Tópicos de Conversação</h2>
+      
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+        <div class="topic-card card text-center hover-scale">
+          <div class="text-4xl mb-3">👋</div>
+          <h4 class="font-semibold text-kiddy-dark">Cumprimentos</h4>
+        </div>
+        <div class="topic-card card text-center hover-scale">
+          <div class="text-4xl mb-3">👨‍👩‍👧‍👦</div>
+          <h4 class="font-semibold text-kiddy-dark">Família</h4>
+        </div>
+        <div class="topic-card card text-center hover-scale">
+          <div class="text-4xl mb-3">🏫</div>
+          <h4 class="font-semibold text-kiddy-dark">Escola</h4>
+        </div>
+        <div class="topic-card card text-center hover-scale">
+          <div class="text-4xl mb-3">🎮</div>
+          <h4 class="font-semibold text-kiddy-dark">Brincadeiras</h4>
+        </div>
+        <div class="topic-card card text-center hover-scale">
+          <div class="text-4xl mb-3">🍎</div>
+          <h4 class="font-semibold text-kiddy-dark">Comida</h4>
+        </div>
+        <div class="topic-card card text-center hover-scale">
+          <div class="text-4xl mb-3">🐶</div>
+          <h4 class="font-semibold text-kiddy-dark">Animais</h4>
+        </div>
+        <div class="topic-card card text-center hover-scale">
+          <div class="text-4xl mb-3">🌈</div>
+          <h4 class="font-semibold text-kiddy-dark">Cores</h4>
+        </div>
+        <div class="topic-card card text-center hover-scale">
+          <div class="text-4xl mb-3">🎵</div>
+          <h4 class="font-semibold text-kiddy-dark">Música</h4>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Conversation Modal -->
+  <div id="conversation-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden flex flex-col">
+      <!-- Header -->
+      <div class="bg-kiddy-blue text-white p-4 flex justify-between items-center">
+        <div class="flex items-center space-x-3">
+          <div id="character-avatar" class="w-12 h-12 bg-white rounded-full flex items-center justify-center">
+            <span id="character-emoji" class="text-2xl">🐻</span>
+          </div>
+          <div>
+            <h3 id="character-name" class="text-xl font-bold">Teddy Bear</h3>
+            <p id="character-status" class="text-sm opacity-80">Online</p>
+          </div>
+        </div>
+        <button onclick="endConversation()" class="text-white hover:text-gray-300 text-2xl">&times;</button>
+      </div>
+      
+      <!-- Chat Area -->
+      <div id="chat-area" class="flex-1 p-4 overflow-y-auto bg-gray-50 min-h-[400px]">
+        <!-- Mensagens aparecerão aqui -->
+      </div>
+      
+      <!-- Input Area -->
+      <div class="p-4 bg-white border-t">
+        <div class="flex space-x-3">
+          <input 
+            type="text" 
+            id="message-input" 
+            placeholder="Digite sua mensagem em inglês..." 
+            class="flex-1 p-3 border border-gray-300 rounded-lg focus:outline-none focus:border-kiddy-blue"
+            onkeypress="handleKeyPress(event)"
+          >
+          <button onclick="sendMessage()" class="btn-kiddy btn-primary">
+            Enviar
+          </button>
+        </div>
+        <div class="mt-3 flex flex-wrap gap-2" id="quick-responses">
+          <!-- Respostas rápidas aparecerão aqui -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Progress Section -->
+  <section class="py-12 bg-white">
+    <div class="max-w-7xl mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-8 text-kiddy-dark">Seu Progresso em Conversação</h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="card text-center">
+          <div class="text-4xl mb-4">🏆</div>
+          <h4 class="text-xl font-bold text-kiddy-dark mb-2">Conversas Completas</h4>
+          <p class="text-3xl font-bold text-kiddy-blue" id="conversations-count">0</p>
+        </div>
+        <div class="card text-center">
+          <div class="text-4xl mb-4">⭐</div>
+          <h4 class="text-xl font-bold text-kiddy-dark mb-2">Pontos Ganhos</h4>
+          <p class="text-3xl font-bold text-kiddy-green" id="points-count">0</p>
+        </div>
+        <div class="card text-center">
+          <div class="text-4xl mb-4">🎯</div>
+          <h4 class="text-xl font-bold text-kiddy-dark mb-2">Nível Atual</h4>
+          <p class="text-3xl font-bold text-kiddy-orange" id="current-level">Iniciante</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-kiddy-blue text-white text-center py-8">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="flex justify-center items-center mb-4">
+        <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center mr-3">
+          <span class="text-xl">🧸</span>
+        </div>
+        <h3 class="text-2xl font-bold">KIDDY TALK</h3>
+      </div>
+      <p class="mb-4">Transformando o aprendizado de inglês em uma aventura divertida!</p>
+      <p>&copy; 2025 Kiddy Talk. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/conversation-module.js"></script>
+</body>
+</html>
+

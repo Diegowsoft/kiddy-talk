@@ -1,0 +1,193 @@
+/* Kiddy Talk Website - Estilos Personalizados */
+
+/* Importação da fonte Fredoka */
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&display=swap');
+
+/* Variáveis CSS para cores do tema */
+:root {
+  --kiddy-blue: #2EBBC0;
+  --kiddy-yellow: #FED700;
+  --kiddy-orange: #FF6835;
+  --kiddy-green: #4CAF50;
+  --kiddy-red: #FF9252;
+  --kiddy-soft-white: #FF99FA22;
+  --kiddy-dark: #2E2E2E;
+}
+
+/* Reset e configurações base */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Fredoka', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: var(--kiddy-soft-white);
+  line-height: 1.6;
+}
+
+/* Classes utilitárias para cores */
+.bg-kiddy-blue { background-color: var(--kiddy-blue); }
+.bg-kiddy-yellow { background-color: var(--kiddy-yellow); }
+.bg-kiddy-orange { background-color: var(--kiddy-orange); }
+.bg-kiddy-green { background-color: var(--kiddy-green); }
+.bg-kiddy-red { background-color: var(--kiddy-red); }
+.bg-kiddy-soft-white { background-color: var(--kiddy-soft-white); }
+
+.text-kiddy-blue { color: var(--kiddy-blue); }
+.text-kiddy-yellow { color: var(--kiddy-yellow); }
+.text-kiddy-orange { color: var(--kiddy-orange); }
+.text-kiddy-green { color: var(--kiddy-green); }
+.text-kiddy-red { color: var(--kiddy-red); }
+.text-kiddy-dark { color: var(--kiddy-dark); }
+
+/* Animações e transições */
+.fade-in {
+  animation: fadeIn 0.6s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.bounce {
+  animation: bounce 1s infinite;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-10px); }
+  60% { transform: translateY(-5px); }
+}
+
+/* Efeitos de hover */
+.hover-scale {
+  transition: transform 0.3s ease;
+}
+
+.hover-scale:hover {
+  transform: scale(1.05);
+}
+
+.hover-glow {
+  transition: box-shadow 0.3s ease;
+}
+
+.hover-glow:hover {
+  box-shadow: 0 0 20px rgba(46, 187, 192, 0.5);
+}
+
+/* Botões personalizados */
+.btn-kiddy {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 25px;
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+}
+
+.btn-kiddy:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.btn-primary {
+  background-color: var(--kiddy-blue);
+  color: white;
+}
+
+.btn-secondary {
+  background-color: var(--kiddy-orange);
+  color: white;
+}
+
+.btn-success {
+  background-color: var(--kiddy-green);
+  color: white;
+}
+
+/* Cards responsivos */
+.card {
+  background: white;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+/* Layout responsivo */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.grid {
+  display: grid;
+  gap: 20px;
+}
+
+.grid-2 {
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.grid-3 {
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+/* Navegação ativa */
+.nav-active {
+  background-color: rgba(255,255,255,0.2);
+  border-radius: 20px;
+  padding: 8px 16px;
+}
+
+/* Elementos interativos */
+.interactive {
+  cursor: pointer;
+  user-select: none;
+}
+
+.interactive:active {
+  transform: scale(0.95);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 15px;
+  }
+  
+  .grid {
+    gap: 15px;
+  }
+  
+  .btn-kiddy {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+  
+  h1 { font-size: 1.8rem; }
+  h2 { font-size: 1.5rem; }
+  h3 { font-size: 1.2rem; }
+}
+
+@media (max-width: 480px) {
+  .grid-2, .grid-3 {
+    grid-template-columns: 1fr;
+  }
+}
+
